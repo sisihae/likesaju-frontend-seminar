@@ -95,7 +95,10 @@ export const SearchOutputTheme = () => {
             오늘 운세 공유하기
           </Button>
           {isShareModalOpen && (
-            <SajuShareModal setIsModalOpen={setIsShareModalOpen} />
+            <SajuShareModal
+              OutputCardData={OutputCardData}
+              setIsModalOpen={setIsShareModalOpen}
+            />
           )}
         </>
       )}
