@@ -1,3 +1,5 @@
+//src/components/modals/share-modal.jsx
+
 import React, { useEffect, useState } from 'react';
 import circle from '../../assets/icons/radio-btn.png';
 import circle_selected from '../../assets/icons/radio-btn-selected.png';
@@ -23,10 +25,12 @@ const ProfileComponent = ({ profileImageId, name, isSelected, onSelect }) => {
   );
 };
 
-export const SajuShareModal = ({ setIsModalOpen, OutputCardData }) => {
+export const SajuShareModal = ({ OutputCardData, setIsModalOpen }) => {
   const [profiles, setProfiles] = useState([]);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [searchText, setSearchText] = useState('');
+  const { sendJsonMessage } = useChatWebSocketContext();
+
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
@@ -69,8 +73,12 @@ export const SajuShareModal = ({ setIsModalOpen, OutputCardData }) => {
         '<br>' +
         `${OutputCardData[3].title}: ${OutputCardData[3].msg}`;
 
-      //TODO
-      alert('공유');
+ 
+
+      sendJsonMessage({
+        message: formattedMessage,
+        participant_id: selectedUserId,
+      });
 
       setIsModalOpen(false);
     } catch (error) {
