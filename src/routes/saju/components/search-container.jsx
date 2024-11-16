@@ -4,7 +4,9 @@ import SajuSearchLoading from './search-loading';
 import SajuSearchOutput from './search-output';
 import sajuDummyRequest from './saju-dummy-request.jsx';
 
-export const SajuSearchContainer = ({ step, setStep }) => {
+export const SajuSearchContainer = () => {
+  const [step, setStep] = useState(0);
+
   function onSubmit() {
     setStep(1);
     sajuDummyRequest().then(() => {
@@ -13,7 +15,7 @@ export const SajuSearchContainer = ({ step, setStep }) => {
   }
 
   return (
-    <div className="flex w-[800px] h-fit bg-white rounded-2xl shadow-lg flex-col justify-start items-start">
+    <div className="flex w-[800px] h-[670px] bg-white rounded-2xl shadow-lg flex-col justify-start items-start">
       {step === 0 && <SajuSearchInput onSubmit={onSubmit} />}
       {step === 1 && <SajuSearchLoading />}
       {step === 2 && <SajuSearchOutput outputs={tempOutputs} />}

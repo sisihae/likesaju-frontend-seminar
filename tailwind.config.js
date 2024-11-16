@@ -34,16 +34,6 @@ module.exports = {
       },
       animation: {
         fadeIn: 'fadeIn 0.5s ease-in-out',
-        'spin-slow': 'spin 3s linear infinite',
-      },
-      screens: {
-        mobile: { max: '1024px' },
-      },
-      keyframes: {
-        spin: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
-        },
       },
     },
     fontFamily: {
